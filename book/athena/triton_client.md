@@ -1,5 +1,16 @@
 # All about Triton Client Saga
 
+## Download the Triton Client
+
+```bash
+wget https://github.com/triton-inference-server/server/releases/download/v2.46.0/v2.46.0_ubuntu2204.clients.tar.gz
+tar -xvzf v2.46.0_ubuntu2204.clients.tar.gz
+```
+Summary of tarball's md5sum:
+| File | md5sum |
+| --- | --- |
+| v2.46.0_ubuntu2204.clients.tar.gz | dc486bfe1aaa05e6438bd08967b28f62 |
+
 ## Build binary for Triton Client
 
 ```bash
@@ -12,29 +23,7 @@ asetup none,gcc13,cmakesetup --cmakeversion=3.30.5
 asetup Athena,25.0.22,here
 ```
 
-First install `gRPC`.
-```bash
-git clone -b v1.62.3 https://github.com/grpc/grpc
-cd grpc
-git submodule update --init
-```
-Build `gRPC` with `cmake` and `make`
-```bash
-mkdir -p cmake/build
-cd cmake/build
-cmake -DgRPC_INSTALL=ON -DCMAKE_BUILD_TYPE=Release \
-  -DgRPC_BUILD_TESTS=OFF \
-  -DgRPC_SSL_PROVIDER=package \
-  -DBUILD_SHARED_LIBS=OFF \
-  -DCMAKE_INSTALL_PREFIX=/pscratch/sd/x/xju/athena_dev/client_build_20241202/install \
-  ../..
-make -j20 install
-```
-Issues with `gRPC` build:
- - "per_cpu.h:70:30: internal compiler error: Segmentation fault", https://github.com/grpc/grpc/issues/33634
-
-
-Then clone the client repo and build the binary
+Then clone the client repo and build the binary with the third party libraries.
 
 ```bash
 git clone -b r24.10 https://github.com/triton-inference-server/client.git
@@ -48,7 +37,8 @@ cmake .. -DTRITON_ENABLE_CC_HTTP=OFF \
         -DTRITON_THIRD_PARTY_SRC_INSTALL_PREFIX=../../install \
         -DTRITON_COMMON_REPO_TAG=r24.10 \
         -DTRITON_CORE_REPO_TAG=r24.10 \
-        -DTRITON_REPO_ORGANIZATION="https://github.com/triton-inference-server" \
+        -DTRITON_THIRD_PARTY_REPO_TAG=r24.10 \
         -DCMAKE_CXX_STANDARD=20 \
         -DTRITON_ENABLE_ZLIB=ON
+make cc-clients -j20 
 ```
