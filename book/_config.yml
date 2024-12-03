@@ -31,3 +31,8 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+  last_updated: true
+
+sphinx:
+  extra_extensions:
+    - sphinx_last_updated_by_git
