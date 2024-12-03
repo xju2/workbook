@@ -3,7 +3,7 @@
 
 title: My Workbook
 author: Xiangyang Ju
-logo: logo.jepg
+logo: logo.png
 copyright: "2024"
 
 # Force re-execution of notebooks on each build.
