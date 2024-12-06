@@ -8,4 +8,5 @@ parts:
     chapters:
       - file: athena/intro
         sections:
+        - file: athena/athena_dev_in_perlmutter
         - file: athena/triton_client
