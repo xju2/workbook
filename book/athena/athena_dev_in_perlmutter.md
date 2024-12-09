@@ -1,7 +1,7 @@
 
 # Setup Development Environment in Perlmutter
 
-[Development in Shifter using VSCode](Development\ in\ Shifter\ using\ VSCode.md)
+See document about {doc}`./Development\ in\ Shifter\ using\ VSCode.md`. 
 
 ## Build Athena
 

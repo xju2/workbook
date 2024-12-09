@@ -36,3 +36,7 @@ html:
 sphinx:
   extra_extensions:
     - sphinx_last_updated_by_git
+
+parse:
+  myst_enable_extensions:
+    - amsmath
