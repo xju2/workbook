@@ -1,6 +1,8 @@
 
 # Setup Development Environment in Perlmutter
 
+> {sub-ref}`today` | {sub-ref}`wordcount-words` words | {sub-ref}`wordcount-minutes` min read
+
 See document about [](./Development-in-Shifter-using-VSCode.md).
 See my citation {cite}`ExaTrkX:2021abe`.
 
