@@ -1,7 +1,9 @@
 
+# Setup Development Environment in Perlmutter
 
-After connecting to the shifter container. 
+[Development in Shifter using VSCode](Development\ in\ Shifter\ using\ VSCode.md)
 
+## Build Athena
 
 ```bash
 source /global/cfs/cdirs/atlas/scripts/setupATLAS.sh && setupATLAS
