@@ -1,7 +1,8 @@
 
 # Setup Development Environment in Perlmutter
 
-See document about [](./Development-in-Shifter-using-VSCode.md).
+See document about {doc}`./Development-in-Shifter-using-VSCode.md`.
+See my citation {cite}`ExaTrkX:2021abe`.
 
 ## Build Athena
 
@@ -21,4 +22,8 @@ cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 \
 
 make -j 32
 source x86_64-el9-gcc13-opt/setup.sh
+```
+
+
+```{bibliography}
 ```

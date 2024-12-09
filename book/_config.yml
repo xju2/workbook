@@ -36,6 +36,8 @@ html:
 sphinx:
   extra_extensions:
     - sphinx_last_updated_by_git
+  config:
+    bibtex_reference_style: label
 
 parse:
   myst_enable_extensions:
