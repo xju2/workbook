@@ -1,12 +1,12 @@
 
 # Setup Development Environment in Perlmutter
 
-See document about {doc}`Development-in-Shifter-using-VSCode.md`.
+See document about [](./Development-in-Shifter-using-VSCode.md).
 See my citation {cite}`ExaTrkX:2021abe`.
 
 ## Build Athena
 
-```bash
+```{code-block} bash
 source /global/cfs/cdirs/atlas/scripts/setupATLAS.sh && setupATLAS
 ```
 Then setup Athena release:
@@ -14,7 +14,8 @@ Then setup Athena release:
 asetup Athena,main,here,latest
 ```
 Then compile the code:
-```bash
+```{code-block} bash
+:caption: Configure and build Athena.
 cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 \
   -DATLAS_ENABLE_IDE_HELPERS=TRUE \
   -DATLAS_PACKAGE_FILTER_FILE=../athena/package_filter.txt \

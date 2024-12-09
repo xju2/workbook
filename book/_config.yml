@@ -43,3 +43,4 @@ sphinx:
 parse:
   myst_enable_extensions:
     - amsmath
+  myst_url_schemes: [mailto, http, https]
