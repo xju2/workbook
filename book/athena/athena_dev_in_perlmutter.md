@@ -3,9 +3,9 @@
 
 > Last update: {sub-ref}`today` | {sub-ref}`wordcount-words` words | {sub-ref}`wordcount-minutes` min read
 
-```{contents} Table of Contents
+<!-- ```{contents} Table of Contents
 :depth: 3
-```
+``` -->
 
 See document about [](./Development-in-Shifter-using-VSCode.md).
 See my citation {cite}`ExaTrkX:2021abe`.
