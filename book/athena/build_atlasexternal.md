@@ -41,10 +41,17 @@ export NWORKERS=32
     asetup none,gcc13,cmakesetup --cmakeversion=3.30.5
     export CPLUS_INCLUDE_PATH=/cvmfs/sft.cern.ch/lcg/releases/LCG_106a/rapidjson/1.1.0/x86_64-el9-gcc13-opt/include:$CPLUS_INCLUDE_PATH
 
-    cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCTEST_USE_LAUNCHERS=TRUE  \
-    -DLCG_VERSION_POSTFIX="b_ATLAS_1" \
-    -S build/src/AthenaExternals/Projects/AthenaExternals \
-    -B build/build/AthenaExternals
+    cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCTEST_USE_LAUNCHERS=TRUE \
+        -S build/src/AthenaExternals/Projects/AthenaExternals \
+        -B build/build/AthenaExternals \
+        -DLCG_VERSION_NUMBER=106 \
+        -DLCG_VERSION_POSTFIX="b_ATLAS_1" \
+        -DATLAS_GAUDI_SOURCE="URL;https://gitlab.cern.ch/atlas/Gaudi/-/archive/v39r1.001/Gaudi-v39r1.001.tar.gz;URL_MD5;ac2bdcde14c2feb7684e34d6e7879db8" \
+        -DATLAS_ACTS_SOURCE="URL;https://github.com/acts-project/acts/archive/refs/tags/v38.2.0.tar.gz;URL_HASH;SHA256=90f23bd409a153fee0a78d07d230996bfe1c8ccdc8753798a594456a8e41d28e" \
+        -DATLAS_GEOMODEL_SOURCE="URL;https://gitlab.cern.ch/GeoModelDev/GeoModel/-/archive/6.7.0/GeoModel-6.7.0.tar.bz2;URL_MD5;450616aa33f97857aad3c7cbe1ff74fd" \
+        -DATLAS_VECMEM_SOURCE="URL;http://cern.ch/atlas-software-dist-eos/externals/vecmem/v1.5.0.tar.gz;https://github.com/acts-project/vecmem/archive/refs/tags/v1.5.0.tar.gz;URL_MD5;3cc5a3bb14b93f611513535173a6be28" \
+        -DATLAS_GEANT4_USE_LTO=TRUE \
+        -DATLAS_VECGEOM_USE_LTO=TRUE
 
     cmake --build build/build/AthenaExternals --target Package_Gdb 2>&1 | tee log.build.Gdb
 
@@ -56,3 +63,7 @@ export NWORKERS=32
 ```bash
 time ./athena/Projects/Athena/build.sh -acmi -x "-DATLAS_ENABLE_CI_TESTS=TRUE -DATLAS_EXTERNAL=${ATLASAuthXML} -DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE " -k "-j${NWORKERS}" 2>&1 | tee build/log.build.athena.txt
 ```
+
+Possible issues
+- checker_gccplugins not found.
+- "Could not find nvcc, please set CUDAToolkit_ROOT."
