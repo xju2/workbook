@@ -1,5 +1,6 @@
 # Build atlas external
 
+## Build at NERSC
 The following instructions are for building the ATLAS external packages at NERSC
 using the container `docexoty/alma9-atlasos-dev`. The container is built with
 the [Dockerfile](https://github.com/xju2/dockers/blob/main/HEP/atlas/alma9_cpu/Dockerfile).
@@ -33,7 +34,7 @@ export NWORKERS=32
     export AtlasExternals_REF=origin/debug_mr_triton
     export CPLUS_INCLUDE_PATH=/cvmfs/sft.cern.ch/lcg/releases/LCG_106a/rapidjson/1.1.0/x86_64-el9-gcc13-opt/include:$CPLUS_INCLUDE_PATH
     rm -rf build && mkdir build
-    ./athena/Projects/Athena/build_externals.sh -t Release -k "-j${NWORKERS}" 2>&1 | tee build/log.external.txt
+    ./athena/Projects/Athena/build_externals.sh -c -t Release -k "-j${NWORKERS}" 2>&1 | tee build/log.external.txt
     ```
 
     3.2 Or build the external packages manually.
@@ -61,9 +62,17 @@ export NWORKERS=32
 
 4. Build the Athena packages.
 ```bash
-time ./athena/Projects/Athena/build.sh -acmi -x "-DATLAS_ENABLE_CI_TESTS=TRUE -DATLAS_EXTERNAL=${ATLASAuthXML} -DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE " -k "-j${NWORKERS}" 2>&1 | tee build/log.build.athena.txt
+time ./athena/Projects/Athena/build.sh -cmi -x "-DATLAS_ENABLE_CI_TESTS=TRUE -DATLAS_EXTERNAL=${ATLASAuthXML} -DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE " -k "-j${NWORKERS}" 2>&1 | tee build/log.build.athena.txt
 ```
 
 Possible issues
 - checker_gccplugins not found.
 - "Could not find nvcc, please set CUDAToolkit_ROOT."
+
+## Build at lxplus
+The lxplus machine is used, `aiatlasbm005`. 
+
+```bash
+setupATLAS
+```
+And the rest is the same as building at NERSC.
