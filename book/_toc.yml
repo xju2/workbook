@@ -10,3 +10,4 @@ parts:
         sections:
         - file: athena/athena_dev_in_perlmutter
         - file: athena/triton_client
+        - file: athena/build_atlasexternal
