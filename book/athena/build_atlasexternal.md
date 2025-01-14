@@ -66,7 +66,7 @@ time ./athena/Projects/Athena/build.sh -cmi -x "-DATLAS_ENABLE_CI_TESTS=TRUE -DA
 ```
 
 Possible issues
-- adding `export CPLUS_INCLUDE_PATH=/cvmfs/sft.cern.ch/lcg/releases/LCG_106a/rapidjson/1.1.0/x86_64-el9-gcc13-opt/include:$CPLUS_INCLUDE_PATH` causes the Ddb fails to build.
+- > adding `export CPLUS_INCLUDE_PATH=/cvmfs/sft.cern.ch/lcg/releases/LCG_106a/rapidjson/1.1.0/x86_64-el9-gcc13-opt/include:$CPLUS_INCLUDE_PATH` causes the Ddb fails to build.
 - checker_gccplugins not found.
 - "Could not find nvcc, please set CUDAToolkit_ROOT."
 
