@@ -17,6 +17,8 @@ source /global/cfs/cdirs/atlas/scripts/setupATLAS.sh
 setupATLAS
 ```
 
+See document about [](./checkout-athena.md) checking out Athena.
+
 2. Environment variables for build Athena
 ```bash
 export PATH=/cvmfs/sft.cern.ch/lcg/contrib/ninja/1.11.1/Linux-x86_64/bin:$PATH
