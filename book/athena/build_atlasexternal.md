@@ -33,8 +33,7 @@ export NWORKERS=32
     ```bash
     asetup none,gcc13,cmakesetup --cmakeversion=3.30.5
     export AtlasExternals_URL=https://gitlab.cern.ch/xju/atlasexternals.git
-    export AtlasExternals_REF=origin/debug_mr_triton
-    export CPLUS_INCLUDE_PATH=/cvmfs/sft.cern.ch/lcg/releases/LCG_106a/rapidjson/1.1.0/x86_64-el9-gcc13-opt/include:$CPLUS_INCLUDE_PATH
+    export AtlasExternals_REF=origin/new_mr_triton
     rm -rf build && mkdir build
     ./athena/Projects/Athena/build_externals.sh -c -t Release -k "-j${NWORKERS}" 2>&1 | tee build/log.external.txt
     ```
@@ -42,7 +41,6 @@ export NWORKERS=32
     3.2 Or build the external packages manually.
     ```bash
     asetup none,gcc13,cmakesetup --cmakeversion=3.30.5
-    export CPLUS_INCLUDE_PATH=/cvmfs/sft.cern.ch/lcg/releases/LCG_106a/rapidjson/1.1.0/x86_64-el9-gcc13-opt/include:$CPLUS_INCLUDE_PATH
 
     cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCTEST_USE_LAUNCHERS=TRUE \
         -S build/src/AthenaExternals/Projects/AthenaExternals \
@@ -68,6 +66,7 @@ time ./athena/Projects/Athena/build.sh -cmi -x "-DATLAS_ENABLE_CI_TESTS=TRUE -DA
 ```
 
 Possible issues
+- adding `export CPLUS_INCLUDE_PATH=/cvmfs/sft.cern.ch/lcg/releases/LCG_106a/rapidjson/1.1.0/x86_64-el9-gcc13-opt/include:$CPLUS_INCLUDE_PATH` causes the Ddb fails to build.
 - checker_gccplugins not found.
 - "Could not find nvcc, please set CUDAToolkit_ROOT."
 
