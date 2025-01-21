@@ -75,6 +75,7 @@ export NWORKERS=32
     ```bash
     export DATAPATH=$DATAPATH:/cvmfs/atlas-nightlies.cern.ch/repo/sw/main_Athena_x86_64-el9-gcc13-opt/atlas/offline/ReleaseData/v20
     ```
+    Then you can use the [](./build_athena_packages.md) instructions to debug the failed packages.
 
 Possible issues
 - adding `export CPLUS_INCLUDE_PATH=xxxx:$CPLUS_INCLUDE_PATH` causes the Ddb fails to build.
