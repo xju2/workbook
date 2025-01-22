@@ -49,16 +49,15 @@ cmake --build build/build/AthenaExternals --target Package_Gdb 2>&1 | tee log.bu
 cmake --build build/build/AthenaExternals 2>&1 | tee log.build
 DESTDIR=build/install cmake --install build/build/AthenaExternals 
 ```
-````
-
-Remove the stamp folder if you want cmake to re-configure the package.
+Force re-configure the package.
 ```bash
 rm -rf build/build/AthenaExternals/src/TritonClient-stamp
 ```
-Remove the build folder if you want cmake to re-build (i.e. re-compile) the package.
+Force re-build (i.e. re-compile) the package.
 ```bash
 rm -rf build/build/AthenaExternals/src/TritonClient-build
 ```
+````
 
 ````{admonition} 3.3 Check if the environment contains all depdenencies.
 ```bash
