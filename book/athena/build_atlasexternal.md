@@ -1,4 +1,6 @@
 # Build ATLAS external
+The following is based on my experience in stalling the 
+[Triton client](https://github.com/triton-inference-server/client/tree/main) in the ATLAS environment.
 
 ## Build at NERSC
 The following instructions are for building the ATLAS external packages at NERSC
@@ -28,7 +30,7 @@ export NWORKERS=32
 ```
 
 ### Build the external packages.
-````{admonition} 3.1 Use the existing script to start the building.
+`````{admonition} 3.1 Use the existing script to start the building.
 ```bash
 asetup none,gcc13,cmakesetup --cmakeversion=3.30.5
 export AtlasExternals_URL=https://gitlab.cern.ch/xju/atlasexternals.git
@@ -38,30 +40,32 @@ rm -rf build && mkdir build
 ```
 If the above failed, find the package that failed and 
 continue the debugging with the following commands.
-````
 
-3.2 Or build the external packages manually.
+````{admonition} 3.2 Continue the debugging.
 ```bash
 asetup none,gcc13,cmakesetup --cmakeversion=3.30.5
 cmake --build build/build/AthenaExternals --target Package_Gdb 2>&1 | tee log.build.Gdb
 cmake --build build/build/AthenaExternals 2>&1 | tee log.build
 DESTDIR=build/install cmake --install build/build/AthenaExternals 
 ```
+````
 
 Remove the stamp folder if you want cmake to re-configure the package.
 ```bash
 rm -rf build/build/AthenaExternals/src/TritonClient-stamp
 ```
-
 Remove the build folder if you want cmake to re-build (i.e. re-compile) the package.
 ```bash
 rm -rf build/build/AthenaExternals/src/TritonClient-build
 ```
 
-3.3 Once all external packages are built, check if the environment contains all depdenencies.
+````{admonition} 3.3 Check if the environment contains all depdenencies.
 ```bash
 vim build/install/AthenaExternals/25.0.24/InstallArea/x86_64-el9-gcc13-opt/env_setup.sh
 ```
+````
+`````
+
 
 ### Build the Athena packages.
 
