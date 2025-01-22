@@ -21,7 +21,7 @@ or if you have a privately built Athena:
 asetup Athena,25.0.24 --releasepath=build/install
 ```
 
-## Build the package.
+## Build packages
 You need a package filterng file, `packages.txt`,
 to filter out the packages you don't want to build.
 One example is:
