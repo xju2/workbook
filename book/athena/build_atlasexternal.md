@@ -28,8 +28,7 @@ export NWORKERS=32
 ```
 
 ### Build the external packages.
-
-3.1 First use the existing script to start teh building.
+````{admonition} 3.1 Use the existing script to start the building.
 ```bash
 asetup none,gcc13,cmakesetup --cmakeversion=3.30.5
 export AtlasExternals_URL=https://gitlab.cern.ch/xju/atlasexternals.git
@@ -39,6 +38,8 @@ rm -rf build && mkdir build
 ```
 If the above failed, find the package that failed and 
 continue the debugging with the following commands.
+````
+
 3.2 Or build the external packages manually.
 ```bash
 asetup none,gcc13,cmakesetup --cmakeversion=3.30.5
