@@ -30,7 +30,7 @@ export NWORKERS=32
 ```
 
 ### Build the external packages.
-`````{admonition} 3.1 Use the existing script to start the building.
+`````{admonition} 1. Use the existing script to start the building.
 ```bash
 asetup none,gcc13,cmakesetup --cmakeversion=3.30.5
 export AtlasExternals_URL=https://gitlab.cern.ch/xju/atlasexternals.git
@@ -38,14 +38,16 @@ export AtlasExternals_REF=origin/new_mr_triton
 rm -rf build && mkdir build
 ./athena/Projects/Athena/build_externals.sh -c -t Release -k "-j${NWORKERS}" 2>&1 | tee build/log.external.txt
 ```
+Detailed build logs can be found at `build/build/AthenaExternals/BuildLogs`.
+
 If the above failed, find the package that failed and 
 continue the debugging with the following commands.
 `````
 
-````{admonition} 3.2 Continue the debugging.
+````{admonition} 2. Continue the debugging.
 ```bash
 asetup none,gcc13,cmakesetup --cmakeversion=3.30.5
-cmake --build build/build/AthenaExternals --target Package_Gdb 2>&1 | tee log.build.Gdb
+cmake --build build/build/AthenaExternals --target Package_TritonClient 2>&1 | tee log.build.client
 cmake --build build/build/AthenaExternals 2>&1 | tee log.build
 DESTDIR=build/install cmake --install build/build/AthenaExternals 
 ```
@@ -59,7 +61,7 @@ rm -rf build/build/AthenaExternals/src/TritonClient-build
 ```
 ````
 
-````{admonition} 3.3 Check if the environment contains all depdenencies.
+````{admonition} 3. Check if the environment contains all depdenencies.
 ```bash
 vim build/install/AthenaExternals/25.0.24/InstallArea/x86_64-el9-gcc13-opt/env_setup.sh
 ```
@@ -68,12 +70,12 @@ vim build/install/AthenaExternals/25.0.24/InstallArea/x86_64-el9-gcc13-opt/env_s
 
 ### Build the Athena packages.
 
-4.1 Use the existing script.
+1. Use the existing script.
 ```bash
 time ./athena/Projects/Athena/build.sh -cmi -x "-DATLAS_ENABLE_CI_TESTS=TRUE -DATLAS_EXTERNAL=${ATLASAuthXML} -DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE " -k "-j${NWORKERS}" 2>&1 | tee build/log.build.athena.txt
 ```
 
-4.2 If the above failed, continue the debugging with the following commands.
+2. If the above failed, continue the debugging with the following commands.
 ```bash
 asetup Athena,25.0.24 --releasepath=build/install --siteroot=/cvmfs/atlas-nightlies.cern.ch/repo/sw/main_Athena_x86_64-el9-gcc13-opt
 ```
