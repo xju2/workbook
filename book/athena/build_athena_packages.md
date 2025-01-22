@@ -1,6 +1,6 @@
 # Build Athena Packages
 
-1. Setup the environment
+## Setup the environment
 ```bash
 shifter --image=docexoty/alma9-atlasos-dev:latest --module=cvmfs bash 
 ```
@@ -12,7 +12,7 @@ source /global/cfs/cdirs/atlas/scripts/setupATLAS.sh
 setupATLAS
 ```
 
-2. Setup Athena
+## Setup Athena
 ```bash
 asetup Athena,main,latest,here
 ```
@@ -21,7 +21,7 @@ or if you have a privately built Athena:
 asetup Athena,25.0.24 --releasepath=build/install
 ```
 
-3. Build the package.
+## Build the package.
 You need a package filterng file, `packages.txt`,
 to filter out the packages you don't want to build.
 One example is:
