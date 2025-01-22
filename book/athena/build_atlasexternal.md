@@ -40,6 +40,7 @@ rm -rf build && mkdir build
 ```
 If the above failed, find the package that failed and 
 continue the debugging with the following commands.
+`````
 
 ````{admonition} 3.2 Continue the debugging.
 ```bash
@@ -64,7 +65,6 @@ rm -rf build/build/AthenaExternals/src/TritonClient-build
 vim build/install/AthenaExternals/25.0.24/InstallArea/x86_64-el9-gcc13-opt/env_setup.sh
 ```
 ````
-`````
 
 
 ### Build the Athena packages.
