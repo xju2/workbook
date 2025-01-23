@@ -82,12 +82,12 @@ vim build/install/AthenaExternals/25.0.24/InstallArea/x86_64-el9-gcc13-opt/env_s
 
 1. Use the existing script.
 ```bash
-time ./athena/Projects/Athena/build.sh -cmi -x "-DATLAS_ENABLE_CI_TESTS=TRUE -DATLAS_EXTERNAL=${ATLASAuthXML} -DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE " -k "-j${NWORKERS}" 2>&1 | tee build/log.build.athena.txt
+time ./athena/Projects/Athena/build.sh -acmi -x "-DATLAS_ENABLE_CI_TESTS=TRUE -DATLAS_EXTERNAL=${ATLASAuthXML} -DCMAKE_EXPORT_COMPILE_COMMANDS=TRUE -G Ninja" -k "-j${NWORKERS}" 2>&1 | tee build/log.build.athena.txt
 ```
 
 2. If the above failed, continue the debugging with the following commands.
 ```bash
-asetup Athena,25.0.24 --releasepath=build/install --siteroot=/cvmfs/atlas-nightlies.cern.ch/repo/sw/main_Athena_x86_64-el9-gcc13-opt
+asetup Athena,25.0.24 --releasepath=build/install
 ```
 Maybe add the following environment variables.
 ```bash
