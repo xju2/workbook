@@ -1,11 +1,21 @@
 # Build ATLAS external
-The following is based on my experience in stalling the 
-[Triton client](https://github.com/triton-inference-server/client/tree/main) in the ATLAS environment.
+[ATLAS Externals](https://gitlab.cern.ch/atlas/atlasexternals)
+holds the code for building all flavours of ATLAS
+"externals" projects. Projects holding code not developed by ATLAS,
+but used by the offline/simulation/analysis software of the
+experiment. 
+
+The following is based on my experience in installing the 
+[Triton client](https://github.com/triton-inference-server/client/tree/main) 
+in the ATLAS environment.
 
 ## Build at NERSC
-The following instructions are for building the ATLAS external packages at NERSC
-using the container `docexoty/alma9-atlasos-dev`. The container is built with
-the [Dockerfile](https://github.com/xju2/dockers/blob/main/HEP/atlas/alma9_cpu/Dockerfile).
+The following instructions uses the container `docexoty/alma9-atlasos-dev`. 
+The container is built with the 
+[Dockerfile](https://github.com/xju2/dockers/blob/main/HEP/atlas/alma9_cpu/Dockerfile).
+
+And I use `shifter` + the `cvmfs` module to build the ATLAS software.
+
 
 ### Setup the environment
 ```bash
