@@ -3,12 +3,12 @@
 
 format: jb-book
 root: intro
-parts:
-  - caption: Athena
+chapters:
+  - file: athena/intro
     sections:
     - file: athena/athena_dev_in_perlmutter
     - file: athena/triton_client
     - file: athena/build_atlasexternal
-  - caption: NERSC
+  - file: nersc/intro
     sections:
     - file: nersc/newusers
