@@ -100,6 +100,9 @@ Possible issues
 - checker_gccplugins not found.
 - "Could not find nvcc, please set CUDAToolkit_ROOT."
 
+3. Test the tracking as a service
+Follow the instructions in [](./tracking-aas-in-athena.md) to test the tracking as a service.
+
 ## Build at lxplus
 The lxplus machine is used, `aiatlasbm005`. 
 
