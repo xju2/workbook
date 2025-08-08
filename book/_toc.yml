@@ -12,3 +12,6 @@ chapters:
   - file: nersc/intro
     sections:
     - file: nersc/newusers
+  - file: foundation_universe/intro
+    sections:
+    - file: foundation_universe/history_of_commands
