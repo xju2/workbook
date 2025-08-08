@@ -9,7 +9,7 @@ The repository is located: https://github.com/xju2/foundational_universe.
 The most trained version `v0.4.4` in the W&B project `fundra_tokenization_v2`. I trained it for 100 hours with 16 GPUs.
 
 ```bash!
-fundra_eval_tokens -f src/fundra/configs/resolved/vqvae/v0.4.4.yaml -c /pscratch/sd/x/xju/code/foundational_universe/logs/vqvae/v0.4.4/checkpoints/best-gzjnln47-4-38800.ckpt -o logs/fundra_tokenization_test/v0.4.4/eval-v1
+fundra_eval_tokens -f src/fundra/configs/resolved/vqvae/v0.4.4.yaml -c /pscratch/sd/x/xju/code/foundational_universe/logs/vqvae/v0.4.4/checkpoints/best-gzjnln47-4-38800.ckpt -o logs/fundra_tokenization_test/v0.4.4/eval-v1 -n 50
 ```
 
 ## 2025/08/1

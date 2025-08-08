@@ -4,6 +4,9 @@
 format: jb-book
 root: intro
 chapters:
+  - file: programming/intro
+    sections:
+    - file: programming/git
   - file: athena/intro
     sections:
     - file: athena/athena_dev_in_perlmutter
