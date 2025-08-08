@@ -12,6 +12,20 @@ The most trained version `v0.4.4` in the W&B project `fundra_tokenization_v2`. I
 fundra_eval_tokens -f src/fundra/configs/resolved/vqvae/v0.4.4.yaml -c /pscratch/sd/x/xju/code/foundational_universe/logs/vqvae/v0.4.4/checkpoints/best-gzjnln47-4-38800.ckpt -o logs/fundra_tokenization_test/v0.4.4/eval-v1 -n 50
 ```
 
+The scaling part turns out to be not so good. See https://github.com/xju2/foundational_universe/issues/16. Rework the scaling.
+
+```bash!
+get_node
+
+fundra_analyze_dataset /pscratch/sd/z/zarija/MLHydro/L80_N4096_z3_s1.hdf5 --output /global/cfs/cdirs/m3443/usr/xju/Fundra/data/scaled_features_using_physics_scaling/.cache/L80_N4096_z3_s1_cache/dataset_statistics.csv -w 128
+
+mkdir -p /global/cfs/cdirs/m3443/usr/xju/Fundra/data/scaled_features_using_physics_scaling/.cache/L80_N4096_z3_s2_cache
+
+fundra_analyze_dataset /pscratch/sd/z/zarija/MLHydro/L80_N4096_z3_s2.hdf5 --output /global/cfs/cdirs/m3443/usr/xju/Fundra/data/scaled_features_using_physics_scaling/.cache/L80_N4096_z3_s2_cache/dataset_statistics.csv -w 128
+```
+
+check out the `fix-16`.
+
 ## 2025/08/1
 Evaluate the training of `v0.4.1`
 ```bash!
