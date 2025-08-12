@@ -5,6 +5,31 @@ tags: workbook, fundra
 # Commands of running the Foundation Universe
 
 The repository is located: https://github.com/xju2/foundational_universe.
+
+## 2025/08/09
+Evaluate the training of `v0.4.5`, which is when I am using the new scaling method.
+```bash!
+fundra_eval_tokens -f src/fundra/configs/resolved/vqvae/v0.4.5.yaml -c /pscratch/sd/x/xju/code/foundational_universe/logs/vqvae/v0.4.5/checkpoints/best-smv6apty-0-1400.ckpt -o logs/fundra_tokenization_test/v0.4.5/eval-v1 -n 1
+```
+The performance is even worse than `v0.4.4`. All embeddings match to the same token.
+Maybe the codebook size (4096) is too large. Test codebook size of 1024 in `v0.4.6`.
+
+Prepare the small dataset for testing different ideas.
+```bash
+fundra_analyze_dataset /pscratch/sd/z/zarija/MLHydro/L80_N512_z3_s1.hdf5 --output /global/cfs/cdirs/m3443/usr/xju/Fundra/data/scaled_features_physics/.cache/L80_N512_z3_s1_cache/cosmo_fields.csv -w 6
+
+fundra_analyze_dataset /pscratch/sd/z/zarija/MLHydro/L80_N512_z3_s2.hdf5 --output /global/cfs/cdirs/m3443/usr/xju/Fundra/data/scaled_features_physics/.cache/L80_N512_z3_s2_cache/cosmo_fields.csv -w 6
+```
+
+`v0.4.7` disables the `rotate_trick` and enables `straight_through`.
+However, the loss goes down at the same rate as `v0.4.6`, almost exactly the same...
+Not sure why.
+
+Fixed the warning of gradient stride does not match the tensor stride.
+
+
+
+
 ## 2025/08/08
 The most trained version `v0.4.4` in the W&B project `fundra_tokenization_v2`. I trained it for 100 hours with 16 GPUs.
 
