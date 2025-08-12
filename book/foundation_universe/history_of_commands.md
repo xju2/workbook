@@ -6,6 +6,11 @@ tags: workbook, fundra
 
 The repository is located: https://github.com/xju2/foundational_universe.
 
+## 2025/08/11
+```bash
+fundra_eval_tokens -f src/fundra/configs/resolved/vqvae/v0.5.0.yaml -c /pscratch/sd/x/xju/code/foundational_universe/logs/vqvae/v0.5.0/checkpoints/best-6lwjrt2h-0-6800.ckpt -o logs/fundra_tokenization_test/v0.5.0/eval-v1 -n 5
+```
+
 ## 2025/08/09
 Evaluate the training of `v0.4.5`, which is when I am using the new scaling method.
 ```bash!
@@ -26,9 +31,6 @@ However, the loss goes down at the same rate as `v0.4.6`, almost exactly the sam
 Not sure why.
 
 Fixed the warning of gradient stride does not match the tensor stride.
-
-
-
 
 ## 2025/08/08
 The most trained version `v0.4.4` in the W&B project `fundra_tokenization_v2`. I trained it for 100 hours with 16 GPUs.
