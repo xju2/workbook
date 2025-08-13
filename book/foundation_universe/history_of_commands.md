@@ -8,7 +8,9 @@ The repository is located: https://github.com/xju2/foundational_universe.
 
 ## 2025/08/11
 ```bash
-fundra_eval_tokens -f src/fundra/configs/resolved/vqvae/v0.5.0.yaml -c /pscratch/sd/x/xju/code/foundational_universe/logs/vqvae/v0.5.0/checkpoints/best-6lwjrt2h-0-6800.ckpt -o logs/fundra_tokenization_test/v0.5.0/eval-v1 -n 5
+fundra_eval_tokens -f src/fundra/configs/resolved/vqvae/v0.5.0.yaml -c /pscratch/sd/x/xju/code/foundational_universe/logs/vqvae/v0.5.0/checkpoints/best-wlsbpiyl-0-1800.ckpt -o logs/fundra_tokenization_test/v0.5.0/eval-v4 -n 10 -j 2
+
+fundra_eval_tokens -f src/fundra/configs/resolved/vqvae/v0.4.1.yaml -c /pscratch/sd/x/xju/code/foundational_universe/logs/vqvae/v0.4.1/checkpoints/best-ldd04iq7-2-20800.ckpt -o logs/fundra_tokenization_test/v0.4.1/eval-v2 -n 800 -j 40
 ```
 
 ## 2025/08/09
