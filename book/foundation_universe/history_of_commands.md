@@ -15,7 +15,7 @@ fundra_preprocess -f src/fundra/configs/resolved/vqvae/v0.6.0.yaml -c datamodule
 
 Evaluation of the training of `v0.6.0`.
 ```bash
-fundra_eval_tokens -f src/fundra/configs/resolved/vqvae/v0.6.0.yaml -c /pscratch/sd/x/xju/code/foundational_universe/logs/vqvae/v0.6.0/checkpoints/best-d057pst8-0-2900.ckpt -o logs/fundra_tokenization_test/v0.6.0/eval-v1 -n 5 -j 2
+fundra_eval_tokens -f src/fundra/configs/resolved/vqvae/v0.6.0.yaml -c /pscratch/sd/x/xju/code/foundational_universe/logs/vqvae/v0.6.0/checkpoints/best-wkvvshpj-11-45500.ckpt -o logs/fundra_tokenization_test/v0.6.0/eval-v2 -n 5 -j 2
 ```
 
 ## 2025/08/11
