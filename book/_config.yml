@@ -45,6 +45,7 @@ html:
 sphinx:
   extra_extensions:
     - sphinx_last_updated_by_git
+    - sphinx_design
   config:
     bibtex_reference_style: author_year
     bibtex_default_style: plain
@@ -52,5 +53,4 @@ sphinx:
 parse:
   myst_enable_extensions:
     - amsmath
-    - sphinx_design
   myst_url_schemes: [mailto, http, https]
