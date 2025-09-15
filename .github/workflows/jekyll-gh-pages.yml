@@ -33,7 +33,10 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip setuptools wheel
-          python -m pip install jupyter-book sphinx-last-updated-by-git
+          python -m pip install pipx
+          pipx install poetry
+          poetry config virtualenvs.in-project true
+          poetry install
       # Build the book
       - name: Build the book
         run: |
