@@ -36,7 +36,7 @@ jobs:
           python -m pip install pipx
           pipx install poetry
           poetry config virtualenvs.in-project true
-          poetry install
+          poetry install --no-root
       # Build the book
       - name: Build the book
         run: |
