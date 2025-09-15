@@ -22,3 +22,4 @@ chapters:
   - file: llm/intro
     sections:
     - file: llm/transformers
+      title: Using Huggingface Transformers
