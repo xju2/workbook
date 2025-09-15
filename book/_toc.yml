@@ -19,3 +19,6 @@ chapters:
     sections:
     - file: foundation_universe/history_of_commands
   - file: other/ml_conf
+  - file: llm/intro
+    sections:
+    - file: llm/transformers
