@@ -6,6 +6,14 @@ tags: workbook, fundra
 
 The repository is located: https://github.com/xju2/foundational_universe.
 
+## 2026/09/24
+
+```
+fundra_eval_tokens -f src/fundra/configs/resolved/vqvae/x0.6.3.yaml \
+  -c /global/cfs/cdirs/m3443/usr/akupres/foundational_universe/logs/vqvae/v0.6.3/checkpoints/24-99300.ckpt \
+  -o logs/fundra_tokenization_test/x0.6.3/eval-v1 -n -1 -j 32
+```
+
 ## 2025/08/14
 Organize the tokens in a 3D structure.
 Need to reprocess the data using a chunk size of 256. During the training, use batch size of 1.
