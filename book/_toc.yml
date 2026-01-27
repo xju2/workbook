@@ -18,7 +18,10 @@ chapters:
   - file: foundation_universe/intro
     sections:
     - file: foundation_universe/history_of_commands
-  - file: other/ml_conf
+  - file: other/intro
+    sections:
+    - file: other/ml_conf
+    - file: other/gnn4itk
   - file: llm/intro
     sections:
     - file: llm/transformers

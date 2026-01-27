@@ -1,6 +1,6 @@
-# All Machine Learning Conferences
+## All Machine Learning Conferences
 
-## 2026 Machine Learning Conferences
+### 2026 Machine Learning Conferences
 | Conference Name                                                            | Dates (2026)              | Location             | Key Deadline         | URL                                              |
 |-----------------------------------------------------------------------------|----------------------------|----------------------|-----------------------|--------------------------------------------------|
 | ICLR 2026 (International Conf. on Learning Representations)                | April 23-27, 2026  | Rio de Janeiro, Brazil | Registration: Dec, 20; AbstractSubmissionDeadline: Sep 19; PaperSubmissionDeadline: Sep 24; PaperReviewsReleasedToAuthors	Nov 11    | https://iclr.cc                                  |
