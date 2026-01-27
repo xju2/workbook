@@ -61,6 +61,11 @@ git checkout -b gnn_aas origin/gnn_aas
 ## WorkTree
 If you want to work on multiple branches at the same time, you can use `git worktree` to create a new working tree for a branch.
 
+In case of increating a worktree for working on an existing branch:
+```bash
+git worktree add -b <new-branch-name> <path-to-new-worktree> <existing-branch-name>
+```
+
 The following showing an example of how to use `worktree` to develop Athena.
 
 1. One-time setup (base repo + remotes):
