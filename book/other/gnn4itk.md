@@ -11,6 +11,11 @@ IMG_NAME="docker.io/alinutzal/tritonserver:2026-01-13-pymmg"
 podman-hpc run -it --rm --gpu --ipc=host --net=host --ulimit memlock=-1 --ulimit stack=67108864 -v $PWD:$PWD -w $PWD $IMG_NAME /bin/bash
 ```
 
+Verify the server by running in the container in `/models/ModuleMap/1`:
+```bash
+python inference.py -i selected_graph_tensor_mm.pt
+```
+
 This is the output of running IaaS.
 ```text
 root@nid001181:/pscratch/sd/x/xju/ITk/ForFinalPaper/taas-dev/alina_ml_pipe/models/ModuleMap/1# python inference.py -i selected_graph_tensor_mm.pt
@@ -59,6 +64,7 @@ cmake -B ${SPARSE_BUILD_DIR} -S athena/Projects/WorkDir -DATLAS_PACKAGE_FILTER_F
 cmake --build sparse_build -- -j 16
 ```
 
+Define useful variables.
 ```bash
 cd /pscratch/sd/x/xju/athena_dev/dev_worktree/20251003_mmAAS
 TRITON_MODEL_NAME='ModuleMap'
@@ -68,6 +74,8 @@ RDO_FILENAME='/global/cfs/cdirs/m3443/data/GNN4ITK/RDOFiles/rel24_ttbar_testing/
 OUTFILE='test.aod.pool.root'
 SPFeatures="x,y,z,module_id,hit_id,r,phi,eta,cluster_r_1,cluster_phi_1,cluster_z_1,cluster_eta_1,cluster_r_2,cluster_phi_2,cluster_z_2,cluster_eta_2"
 ```
+
+Run the tracking reconstruction with GNN4ITK as a service.
 
 ```bash
 Reco_tf.py --CA 'all:True' \
