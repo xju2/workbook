@@ -32,13 +32,17 @@ html:
   use_issues_button: true
   use_repository_button: true
   last_updated: true
+  extra_css:
+    - custom.css
 
 sphinx:
   extra_extensions:
     - sphinx_last_updated_by_git
+    - sphinx_design
   config:
     bibtex_reference_style: author_year
     bibtex_default_style: plain
+    highlight_language: default
 
 parse:
   myst_enable_extensions:
