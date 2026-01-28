@@ -6,6 +6,31 @@ tags: workbook, fundra
 
 The repository is located: https://github.com/xju2/foundational_universe.
 
+## 2026/01/08
+
+```bash
+cd /pscratch/sd/x/xju/code/foundational_universe
+get_node 1 m3443
+
+fundra eval-tokens -f src/fundra/configs/resolved/vqvae/v0.6.0.yaml \
+  -c logs/vqvae/v0.6.0/checkpoints/best-qyd9j9us-63-259400.ckpt \
+  -o logs/fundra_tokenization_test/v0.6.0/eval-v8 -n -1 -j 32
+
+fundra eval-tokens -f src/fundra/configs/resolved/vqvae/v0.6.1.yaml \
+  -c logs/vqvae/v0.6.1/checkpoints/best-xsqzakk9-132-541100.ckpt \
+  -o logs/fundra_tokenization_test/v0.6.1/eval-v2 -n -1 -j 32
+
+
+```
+
+## 2025/09/24
+
+```bash
+fundra_eval_tokens -f src/fundra/configs/resolved/vqvae/x0.6.3.yaml \
+  -c /global/cfs/cdirs/m3443/usr/akupres/foundational_universe/logs/vqvae/v0.6.3/checkpoints/24-99300.ckpt \
+  -o logs/fundra_tokenization_test/x0.6.3/eval-v1 -n -1 -j 32
+```
+
 ## 2025/08/14
 Organize the tokens in a 3D structure.
 Need to reprocess the data using a chunk size of 256. During the training, use batch size of 1.
@@ -16,10 +41,11 @@ fundra_preprocess -f src/fundra/configs/resolved/vqvae/v0.6.0.yaml -c datamodule
 ```
 
 Evaluation of the training of `v0.6.0`.
-```{code-block} bash
-:class: wrap
-
-fundra_eval_tokens -f src/fundra/configs/resolved/vqvae/v0.6.0.yaml -c /pscratch/sd/x/xju/code/foundational_universe/logs/vqvae/v0.6.0/checkpoints/best-qyd9j9us-63-259400.ckpt -o logs/fundra_tokenization_test/v0.6.0/eval-v7 -n 10 -j 2
+```bash
+fundra_eval_tokens -f src/fundra/configs/resolved/vqvae/v0.6.0.yaml -c /pscratch/sd/x/xju/code/foundational_universe/logs/vqvae/v0.6.0/checkpoints/best-wkvvshpj-11-45500.ckpt -o logs/fundra_tokenization_test/v0.6.0/eval-v2 -n 5 -j 2
+## 2025/08/13
+```bash
+fundra_plot_fields -f src/fundra/configs/resolved/vqvae/v0.5.0.yaml -o /pscratch/sd/x/xju/code/foundational_universe/logs/fundra_tokenization_test/native_field_distributions -j 128
 ```
 
 ## 2025/08/11
