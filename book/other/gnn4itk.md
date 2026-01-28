@@ -67,17 +67,18 @@ cmake --build sparse_build -- -j 16
 Define useful variables.
 ```bash
 cd /pscratch/sd/x/xju/athena_dev/dev_worktree/20251003_mmAAS
-TRITON_MODEL_NAME='ModuleMap'
+
 TRITON_URL='nid001056'
 TRITON_PORT=8001
 RDO_FILENAME='/global/cfs/cdirs/m3443/data/GNN4ITK/RDOFiles/rel24_ttbar_testing/RDO.37737772._000213.pool.root.1'
 OUTFILE='test.aod.pool.root'
-SPFeatures="x,y,z,module_id,hit_id,r,phi,eta,cluster_r_1,cluster_phi_1,cluster_z_1,cluster_eta_1,cluster_r_2,cluster_phi_2,cluster_z_2,cluster_eta_2"
 ```
 
-Run the tracking reconstruction with GNN4ITK as a service.
+Run the tracking reconstruction with MM-based GNN4ITk as a service.
 
 ```bash
+TRITON_MODEL_NAME='ModuleMap'
+SPFeatures="x,y,z,module_id,hit_id,r,phi,eta,cluster_r_1,cluster_phi_1,cluster_z_1,cluster_eta_1,cluster_r_2,cluster_phi_2,cluster_z_2,cluster_eta_2"
 Reco_tf.py --CA 'all:True' \
   --autoConfiguration 'everything' \
   --conditionsTag 'all:OFLCOND-MC15c-SDR-14-05' \
@@ -89,5 +90,22 @@ Reco_tf.py --CA 'all:True' \
   --preExec "all:flags.ITk.doEndcapEtaNeighbour=True; flags.Tracking.ITkGNNPass.minClusters = [7,7,7]; flags.Tracking.ITkGNNPass.maxHoles = [4,4,2]; flags.Tracking.GNN.Triton.model = \"$TRITON_MODEL_NAME\"; flags.Tracking.GNN.Triton.url = \"$TRITON_URL\"; flags.Tracking.GNN.Triton.port = ${TRITON_PORT}; flags.Tracking.GNN.spacepointFeatures=\"${SPFeatures}\" " \
   --preInclude 'all:Campaigns.PhaseIIPileUp200' 'InDetConfig.ConfigurationHelpers.OnlyTrackingPreInclude' 'InDetGNNTracking.InDetGNNTrackingFlags.gnnTritonValidation' \
   --inputRDOFile="${RDO_FILENAME}" \
-  --outputAODFile="OUTFILE" --athenaopts='--loglevel=INFO' --maxEvents 2
+  --outputAODFile="OUTFILE" --athenaopts='--loglevel=INFO' --maxEvents 2 --perfmon fullmonmt
+```
+
+Run Double Metric Learning inference:
+```bash
+TRITON_MODEL_NAME='DoubleMetricLearning'
+Reco_tf.py --CA 'all:True' \
+  --autoConfiguration 'everything' \
+  --conditionsTag 'all:OFLCOND-MC15c-SDR-14-05' \
+  --geometryVersion 'all:ATLAS-P2-RUN4-03-00-00' \
+  --multithreaded 'True' \
+  --steering 'doRAWtoALL' \
+  --digiSteeringConf 'StandardInTimeOnlyTruth' \
+  --postInclude 'all:PyJobTransforms.UseFrontier' \
+  --preExec "all:flags.ITk.doEndcapEtaNeighbour=True; flags.Tracking.ITkGNNPass.minClusters = [7,7,7]; flags.Tracking.ITkGNNPass.maxHoles = [4,4,2]; flags.Tracking.GNN.Triton.model = \"$TRITON_MODEL_NAME\"; flags.Tracking.GNN.Triton.url = \"$TRITON_URL\"; flags.Tracking.GNN.Triton.port = ${TRITON_PORT} " \
+  --preInclude 'all:Campaigns.PhaseIIPileUp200' 'InDetConfig.ConfigurationHelpers.OnlyTrackingPreInclude' 'InDetGNNTracking.InDetGNNTrackingFlags.gnnTritonValidation' \
+  --inputRDOFile="${RDO_FILENAME}" \
+  --outputAODFile="OUTFILE" --athenaopts='--loglevel=INFO' --maxEvents 2 --perfmon fullmonmt
 ```
