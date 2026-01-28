@@ -1,0 +1,6 @@
+/* Wrap long lines in code blocks that use :class: wrap */
+.wrap pre {
+  white-space: pre-wrap !important;
+  word-break: break-word !important;
+  overflow-wrap: anywhere !important;
+}
