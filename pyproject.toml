@@ -1,0 +1,21 @@
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[project]
+name = "workbook"
+version = "0.1.0.dev0"
+description = "My personal workbook."
+readme = "README.md"
+requires-python = "<4.0,>=3.11"
+license = {file = "LICENSE"}
+keywords = ["jupyter", "workbook", "notebook", "sphinx", "documentation"]
+authors = [
+  {name = "X. Ju", email = "xju@lbl.gov" }
+]
+
+[project.urls]
+Homepage = "https://www.ml4phys.com/workbook/intro.html"
+
+[tool.poetry.dependencies]
+sphinx-last-updated-by-git = "^0.3.8"
