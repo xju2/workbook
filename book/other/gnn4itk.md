@@ -54,7 +54,7 @@ shifter --image=beojan/mpicuda9-2:latest --module=cvmfs,gpu
 export PATH=/cvmfs/sft.cern.ch/lcg/contrib/ninja/1.11.1/Linux-x86_64/bin:$PATH
 source /global/cfs/cdirs/atlas/scripts/setupATLAS.sh
 setupATLAS
-asetup Athena,25.0.43,here
+asetup Athena,25.0.47,here
 ```
 
 Build Athena if needed.
@@ -105,6 +105,34 @@ Reco_tf.py --CA 'all:True' \
   --digiSteeringConf 'StandardInTimeOnlyTruth' \
   --postInclude 'all:PyJobTransforms.UseFrontier' \
   --preExec "all:flags.ITk.doEndcapEtaNeighbour=True; flags.Tracking.ITkGNNPass.minClusters = [7,7,7]; flags.Tracking.ITkGNNPass.maxHoles = [4,4,2]; flags.Tracking.GNN.Triton.model = \"$TRITON_MODEL_NAME\"; flags.Tracking.GNN.Triton.url = \"$TRITON_URL\"; flags.Tracking.GNN.Triton.port = ${TRITON_PORT} " \
+  --preInclude 'all:Campaigns.PhaseIIPileUp200' 'InDetConfig.ConfigurationHelpers.OnlyTrackingPreInclude' 'InDetGNNTracking.InDetGNNTrackingFlags.gnnTritonValidation' \
+  --inputRDOFile="${RDO_FILENAME}" \
+  --outputAODFile="OUTFILE" --athenaopts='--loglevel=INFO' --maxEvents 2 --perfmon fullmonmt
+```
+
+MM with SPIN system
+
+Or using the open URL
+```bash
+TRITON_URL='iaasdemo.ml4phys.com'
+TRITON_PORT=443
+
+TRITON_URL='amsc-d3.ml4phys.com'
+```
+
+
+```bash
+TRITON_MODEL_NAME='ModuleMap'
+SPFeatures="x,y,z,module_id,hit_id,r,phi,eta,cluster_r_1,cluster_phi_1,cluster_z_1,cluster_eta_1,cluster_r_2,cluster_phi_2,cluster_z_2,cluster_eta_2"
+Reco_tf.py --CA 'all:True' \
+  --autoConfiguration 'everything' \
+  --conditionsTag 'all:OFLCOND-MC15c-SDR-14-05' \
+  --geometryVersion 'all:ATLAS-P2-RUN4-03-00-00' \
+  --multithreaded 'True' \
+  --steering 'doRAWtoALL' \
+  --digiSteeringConf 'StandardInTimeOnlyTruth' \
+  --postInclude 'all:PyJobTransforms.UseFrontier' \
+  --preExec "all:flags.ITk.doEndcapEtaNeighbour=True; flags.Tracking.ITkGNNPass.minClusters = [7,7,7]; flags.Tracking.ITkGNNPass.maxHoles = [4,4,2]; flags.Tracking.GNN.Triton.model = \"$TRITON_MODEL_NAME\"; flags.Tracking.GNN.Triton.url = \"$TRITON_URL\"; flags.Tracking.GNN.Triton.port = ${TRITON_PORT}; flags.Tracking.GNN.spacepointFeatures=\"${SPFeatures}\" " \
   --preInclude 'all:Campaigns.PhaseIIPileUp200' 'InDetConfig.ConfigurationHelpers.OnlyTrackingPreInclude' 'InDetGNNTracking.InDetGNNTrackingFlags.gnnTritonValidation' \
   --inputRDOFile="${RDO_FILENAME}" \
   --outputAODFile="OUTFILE" --athenaopts='--loglevel=INFO' --maxEvents 2 --perfmon fullmonmt
