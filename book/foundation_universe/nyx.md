@@ -1,3 +1,9 @@
+
+## Covert PLT to HDF5
+The script to submit the job `/global/homes/x/xju/m3443/usr/xju/FoundationUniverse/Nyx/Util/Converters/Plotfile2HDF5_grids/submit.sh`
+
+To check your jobs: `sacct -j 49930712 --format=JobID,JobName,SubmitLine,WorkDir%100,State,ExitCode`
+
 ## Gimlet
 
 ```bash
